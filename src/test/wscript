@@ -1,0 +1,19 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+def options(self):
+  pass
+
+def configure(self):
+  pass
+
+def build(self):
+  self.read_shlib('gtest', paths=['/usr/lib'])
+
+  self.program(
+    source = 'main.cpp',
+    target = '../run-tests',
+    use    = 'vst gtest'
+  )
+
+# vim: set et sta sw=2 ts=2:
