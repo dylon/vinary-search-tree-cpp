@@ -14,7 +14,8 @@ def build(self):
   self.shlib(
     source = [
       'vst/node.cpp',
-      'vst/avl_node.cpp'
+      'vst/avl_node.cpp',
+      'vst/iterator.cpp'
     ],
     target = 'vst',
     vnum   = '0.9.0'

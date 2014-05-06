@@ -1,9 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../../vst/node.h"
 #include "../../vst/avl_node.h"
 
-namespace vst {
+using namespace vst;
 
 class AvlNodeTest : public ::testing::Test {
 protected:
@@ -82,6 +81,4 @@ TEST_F(AvlNodeTest, TestLeavesAndBranches) {
   ASSERT_FALSE(lesser_child->isBranch());
   ASSERT_TRUE(greater_child->isLeaf());
   ASSERT_FALSE(greater_child->isBranch());
-}
-
 }

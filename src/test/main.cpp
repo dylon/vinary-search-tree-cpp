@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "vst/avl_node_test.cpp"
+#include "vst/iterator_test.cpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
