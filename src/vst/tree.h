@@ -49,6 +49,7 @@ public:
   }
 
   NodeType* getLeast(NodeType* node) const {
+    if (!node) return nullptr;
     while (node->getLesserChild()) {
       node = node->getLesserChild();
     }
@@ -75,7 +76,7 @@ public:
     if (root == nullptr) {
       root = buildNode(key, value);
     }
-    else if (NodeType* node = find(key)) {
+    else if (NodeType* const node = find(key)) {
       node->addValue(value);
     }
     else {
@@ -171,33 +172,39 @@ public:
   }
 
   inline void preorder(std::function<void (NodeType*)> const fn) const {
-    if (root) preorder(fn, root);
+    preorder(fn, root);
   }
 
   void preorder(std::function<void (NodeType*)> const fn, NodeType* const node) const {
-    fn(node);
-    if (node->getLesserChild()) preorder(fn, node->getLesserChild());
-    if (node->getGreaterChild()) preorder(fn, node->getGreaterChild());
+    if (node) {
+      fn(node);
+      preorder(fn, node->getLesserChild());
+      preorder(fn, node->getGreaterChild());
+    }
   }
 
   inline void inorder(std::function<void (NodeType*)> const fn) const {
-    if (root) inorder(fn, root);
+    inorder(fn, root);
   }
 
   void inorder(std::function<void (NodeType*)> const fn, NodeType* const node) const {
-    if (node->getLesserChild()) inorder(fn, node->getLesserChild());
-    fn(node);
-    if (node->getGreaterChild()) inorder(fn, node->getGreaterChild());
+    if (node) {
+      inorder(fn, node->getLesserChild());
+      fn(node);
+      inorder(fn, node->getGreaterChild());
+    }
   }
 
   inline void postorder(std::function<void (NodeType*)> const fn) const {
-    if (root) postorder(fn, root);
+    postorder(fn, root);
   }
 
   void postorder(std::function<void (NodeType*)> const fn, NodeType* const node) const {
-    if (node->getLesserChild()) postorder(fn, node->getLesserChild());
-    if (node->getGreaterChild()) postorder(fn, node->getGreaterChild());
-    fn(node);
+    if (node) {
+      postorder(fn, node->getLesserChild());
+      postorder(fn, node->getGreaterChild());
+      fn(node);
+    }
   }
 
   auto getRange(KeyType const lower_key, KeyType const upper_key) const {
