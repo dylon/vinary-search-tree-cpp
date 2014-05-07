@@ -4,6 +4,7 @@
 #include "vst/iterator_test.cpp"
 #include "vst/range_iterator_test.cpp"
 #include "vst/nearest_neighbor_iterator_test.cpp"
+#include "vst/avl_tree_test.cpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

@@ -17,7 +17,8 @@ def build(self):
       'vst/avl_node.cpp',
       'vst/iterator.cpp',
       'vst/range_iterator.cpp',
-      'vst/nearest_neighbor_iterator.cpp'
+      'vst/nearest_neighbor_iterator.cpp',
+      'vst/tree.cpp'
     ],
     target = 'vst',
     vnum   = '0.9.0'

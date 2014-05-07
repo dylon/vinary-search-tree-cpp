@@ -77,3 +77,9 @@ TEST_F(RangeIteratorTest, TestSequence) {
   ASSERT_FALSE(iter->hasNext());
   delete iter;
 }
+
+TEST(RangeIteratorTest, NewRangeIteratorShouldBeEmpty) {
+  auto iter = new RangeIterator<AvlNode<int,int>, int>();
+  ASSERT_FALSE(iter->hasNext());
+  delete iter;
+}
